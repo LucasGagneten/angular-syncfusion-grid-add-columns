@@ -1,11 +1,12 @@
 <div class="control-section">
-	<button id='add' (click)='onClick()'>Add columns</button>
+	<button id='add' (click)='onClick("Add")'>Add columns</button>
+	<button id='delete' (click)='onClick("Remove")'>Remove columns</button>
 	<ejs-grid #grid [dataSource]='data' allowPaging='true' height=365 [pageSettings]='initialPage'>
 		<e-columns>
 			<e-column *ngFor="let column of columns" [field]="column.field" [headerText]="column.headerText"
 				[width]="column.width" headerTextAlign='center' textAlign='center'>
         <ng-template #template let-data>
-          <div>{{data[column.field]}}(Template)</div>
+          <div>{{data[column.field]}}</div>
         </ng-template>
         </e-column>
 		</e-columns>

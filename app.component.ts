@@ -1,63 +1,66 @@
-import { Component, OnInit, ViewChild, TemplateRef, Inject  } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  TemplateRef,
+  Inject,
+} from '@angular/core';
 import { data } from './data';
 import { GridComponent } from '@syncfusion/ej2-angular-grids';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: 'app.component.html'
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
 })
-export class AppComponent {
-    public data: Object[];
-    public initialPage: Object; 
-    public columns;
-    public newColumns;
-    public flag = true;
-    @ViewChild('grid') gridObj: GridComponent;
-    @ViewChild('template') template: TemplateRef<{}>;
+export class AppComponent implements OnInit {
+  public data: Object[];
+  public initialPage: Object;
+  public initColumns = [
+    {
+      field: 'A',
+      headerText: 'Column A',
+      width: '100',
+    },
+    {
+      field: 'B',
+      headerText: 'Column B',
+      width: '100',
+    },
+    {
+      field: 'C',
+      headerText: 'Column C',
+      width: '100',
+    },
+  ];
+  public newColumns = [
+    {
+      field: 'D',
+      headerText: 'Column D',
+      width: '100',
+    },
+    {
+      field: 'E',
+      headerText: 'Column E',
+      width: '100',
+    },
+  ];
 
-    ngOnInit(): void {
-        this.data = data;
-        this.initialPage = { pageSizes: true, pageCount: 4 };
-        this.columns = [
-          {
-            field: 'OrderID',
-            headerText: 'Order ID',
-            width: '100'
-          },
-          {
-            field: 'CustomerName',
-            headerText: 'Customer Name',
-            width: '120'
-          },
-          {
-            field: 'ShipCity',
-            headerText: 'Ship City',
-            width: '120'
-          }
-        ]
-        this.newColumns = [
-          {
-            field: 'ShipCountry',
-            headerText: 'Ship Country',
-            width: '120',
-            template: this.template
-          },
-          {
-            field: 'ShipName',
-            headerText: 'Ship Name',
-            width: '140'
-          }
-        ]
-    }
+  public columns = [];
 
-    onClick() {
-      if (this.flag) {
-      this.newColumns.forEach(column=> {
-        column.template = this.template;
-        this.gridObj.columns.push(column);
-      });
+  @ViewChild('grid') gridObj: GridComponent;
+
+  ngOnInit(): void {
+    this.data = data;
+    this.initialPage = { pageSizes: true, pageCount: 4 };
+    this.columns = this.initColumns;
+  }
+
+  onClick(acc: string) {
+    if (acc === 'Add') {
+      this.columns = [...this.initColumns, ...this.newColumns];
       this.gridObj.refreshColumns();
-      this.flag = false;
-      }
-    } 
+    } else {
+      this.columns = this.initColumns;
+    }
+  }
 }
