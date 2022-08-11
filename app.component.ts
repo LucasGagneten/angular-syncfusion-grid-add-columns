@@ -5,7 +5,7 @@ import {
   TemplateRef,
   Inject,
 } from '@angular/core';
-import { data } from './data';
+import { data1, data2 } from './data';
 import { GridComponent } from '@syncfusion/ej2-angular-grids';
 
 @Component({
@@ -14,8 +14,7 @@ import { GridComponent } from '@syncfusion/ej2-angular-grids';
 })
 export class AppComponent implements OnInit {
   public data: Object[];
-  public initialPage: Object;
-  public initColumns = [
+  public columns1 = [
     {
       field: 'A',
       headerText: 'Column A',
@@ -32,7 +31,7 @@ export class AppComponent implements OnInit {
       width: '100',
     },
   ];
-  public newColumns = [
+  public columns2 = [
     {
       field: 'D',
       headerText: 'Column D',
@@ -43,6 +42,21 @@ export class AppComponent implements OnInit {
       headerText: 'Column E',
       width: '100',
     },
+    {
+      field: 'F',
+      headerText: 'Column F',
+      width: '100',
+    },
+    {
+      field: 'G',
+      headerText: 'Column G',
+      width: '100',
+    },
+    {
+      field: 'H',
+      headerText: 'Column H',
+      width: '100',
+    },
   ];
 
   public columns = [];
@@ -50,17 +64,19 @@ export class AppComponent implements OnInit {
   @ViewChild('grid') gridObj: GridComponent;
 
   ngOnInit(): void {
-    this.data = data;
-    this.initialPage = { pageSizes: true, pageCount: 4 };
-    this.columns = this.initColumns;
+    this.data = data1;
+    this.columns = this.columns1;
   }
 
   onClick(acc: string) {
     if (acc === 'Add') {
-      this.columns = [...this.initColumns, ...this.newColumns];
+      this.columns = this.columns2;
+      this.data = data2;
       this.gridObj.refreshColumns();
     } else {
-      this.columns = this.initColumns;
+      this.columns = this.columns1;
+      this.data = data1;
+      this.gridObj.refreshColumns();
     }
   }
 }
