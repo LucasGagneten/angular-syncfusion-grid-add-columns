@@ -7,10 +7,12 @@ import {
 } from '@angular/core';
 import { data1, data2 } from './data';
 import { GridComponent } from '@syncfusion/ej2-angular-grids';
+import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
   public data: Object[];
@@ -32,6 +34,11 @@ export class AppComponent implements OnInit {
     },
   ];
   public columns2 = [
+    {
+      field: 'A',
+      headerText: 'Column A',
+      width: '100',
+    },
     {
       field: 'D',
       headerText: 'Column D',
@@ -72,11 +79,10 @@ export class AppComponent implements OnInit {
     if (acc === 'Add') {
       this.columns = this.columns2;
       this.data = data2;
-      this.gridObj.refreshColumns();
     } else {
       this.columns = this.columns1;
       this.data = data1;
-      this.gridObj.refreshColumns();
     }
+    this.gridObj.refreshColumns();
   }
 }

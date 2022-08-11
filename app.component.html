@@ -1,7 +1,15 @@
 <div class="control-section">
 	<button id='add' (click)='onClick("Add")'>Add columns</button>
 	<button id='delete' (click)='onClick("Remove")'>Remove columns</button>
-	<ejs-grid #grid [dataSource]='data'>
+	<ejs-grid #grid [dataSource]='data'
+									[selectionSettings]="{
+										mode: 'Row',
+										checkboxMode: 'ResetOnRowClick'
+									}"
+									[editSettings]="{ allowEditing: true, allowAdding: true, allowDeleting: true }"
+									[allowSorting]="true"
+									[sortSettings]="{ columns: [{ field: 'name', direction: 'Descending' }]}"
+									[enablePersistence]="false">
 		<e-columns>
 			<e-column field="Id"
                 headerText="ID"
@@ -19,7 +27,7 @@
 								headerTextAlign='center' 
 								textAlign='center'>
         <ng-template #template let-data>
-          <div>{{data[column.field]}}</div>
+          <div>{{data[column.field].value}}</div>
         </ng-template>
         </e-column>
 		</e-columns>

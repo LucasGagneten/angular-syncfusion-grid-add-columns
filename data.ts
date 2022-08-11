@@ -4,23 +4,23 @@ export const data1 = [
    {
       Id: '1',
       name: 'One',
-      A: 'A1',
-      B: 'B1',
-      C: 'C1'
+      A: {value: 'A1'},
+      B: {value: 'B1'},
+      C: {value: 'C1'},
    },
    {
       Id: '2',
       name: 'Two',
-      A: 'A2',
-      B: 'B2',
-      C: 'C2'
+      A: {value: 'A2'},
+      B: {value: 'B2'},
+      C: {value: 'C2'},
    },
    {
       Id: '3',
       name: 'Three',
-      A: 'A3',
-      B: 'B3',
-      C: 'C3'
+      A: {value: 'A3'},
+      B: {value: 'B3'},
+      C: {value: 'C3'},
    }
 ];
 
@@ -28,19 +28,21 @@ export const data2 = [
    {
       Id: '4',
       name: 'Four',
-      D: 'D4',
-      E: 'E4',
-      F: 'F4',
-      G: 'G4',
-      H: 'H4'
+      A: {value: 'A4'},
+      D: {value: 'D4'},
+      E: {value: 'E4'},
+      F: {value: 'F4'},
+      G: {value: 'G4'},
+      H: {value: 'H4'},
    },
    {
       Id: '5',
       name: 'Five',
-      D: 'D5',
-      E: 'E5',
-      F: 'F5',
-      G: 'G5',
-      H: 'H5'
+      A: {value: 'A5'},
+      D: {value: 'D5'},
+      E: {value: 'E5'},
+      F: {value: 'F5'},
+      G: {value: 'G5'},
+      H: {value: 'H5'},
    }
 ];
