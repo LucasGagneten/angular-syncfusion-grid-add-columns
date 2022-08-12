@@ -67,6 +67,7 @@ export class AppComponent implements OnInit {
   ];
 
   public columns = [];
+  private toggle = false;
 
   @ViewChild('grid') gridObj: GridComponent;
 
@@ -75,8 +76,9 @@ export class AppComponent implements OnInit {
     this.columns = this.columns1;
   }
 
-  onClick(acc: string) {
-    if (acc === 'Add') {
+  onClick() {
+    this.toggle = !this.toggle;
+    if (this.toggle) {
       this.columns = this.columns2;
       this.data = data2;
     } else {

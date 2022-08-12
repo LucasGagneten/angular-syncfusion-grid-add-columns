@@ -1,6 +1,5 @@
 <div class="control-section">
-	<button id='add' (click)='onClick("Add")'>Add columns</button>
-	<button id='delete' (click)='onClick("Remove")'>Remove columns</button>
+	<button id='change' (click)='onClick()'>Toggle Data</button>
 	<ejs-grid #grid [dataSource]='data'
 									[selectionSettings]="{
 										mode: 'Row',
@@ -8,7 +7,7 @@
 									}"
 									[editSettings]="{ allowEditing: true, allowAdding: true, allowDeleting: true }"
 									[allowSorting]="true"
-									[sortSettings]="{ columns: [{ field: 'name', direction: 'Descending' }]}"
+									[sortSettings]="{ columns: [{ field: 'A', direction: 'Ascending' }]}"
 									[enablePersistence]="false">
 		<e-columns>
 			<e-column field="Id"
@@ -27,7 +26,9 @@
 								headerTextAlign='center' 
 								textAlign='center'>
         <ng-template #template let-data>
-          <div>{{data[column.field].value}}</div>
+          <div [style.color]="data[column.field].color">
+						{{data[column.field].value}}
+					</div>
         </ng-template>
         </e-column>
 		</e-columns>
