@@ -2,16 +2,6 @@ import { DataUtil } from "@syncfusion/ej2-data";
 
 export const data1 = [
    {
-      Id: '1',
-      name: 'One',
-      A: {
-         value: 'A1',
-         color: 'blue'
-      },
-      B: {value: 'B1'},
-      C: {value: 'C1'},
-   },
-   {
       Id: '2',
       name: 'Two',
       A: {value: 'A2'},
@@ -20,6 +10,16 @@ export const data1 = [
          color: 'red'
       },
       C: {value: 'C2'},
+   },
+   {
+      Id: '1',
+      name: 'One',
+      A: {
+         value: 'A1',
+         color: 'blue'
+      },
+      B: {value: 'B1'},
+      C: {value: 'C1'},
    },
    {
       Id: '3',

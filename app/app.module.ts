@@ -24,6 +24,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { NgModule } from '@angular/core';
 import { AppComponent } from '../app.component';
-@NgModule({ declarations: [ AppComponent ], imports: [ CommonModule, HttpModule, ToolbarModule, GridAllModule, BrowserModule,       NumericTextBoxAllModule, DialogModule, DatePickerAllModule, DropDownListAllModule, ReactiveFormsModule, FormsModule, CheckBoxModule], providers: [], bootstrap: [AppComponent]
+@NgModule({ declarations: [ AppComponent ], imports: [ BrowserModule, CommonModule, FormsModule, ToolbarModule, GridAllModule, NumericTextBoxAllModule, ReactiveFormsModule, FormsModule, CheckBoxModule], providers: [], bootstrap: [AppComponent]
 })
 export class AppModule { }

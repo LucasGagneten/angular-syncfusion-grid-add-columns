@@ -1,37 +1,45 @@
 <div class="control-section">
-	<button id='change' (click)='onClick()'>Toggle Data</button>
-	<ejs-grid #grid [dataSource]='data'
-									[selectionSettings]="{
-										mode: 'Row',
-										checkboxMode: 'ResetOnRowClick'
-									}"
-									[editSettings]="{ allowEditing: true, allowAdding: true, allowDeleting: true }"
-									[allowSorting]="true"
-									[sortSettings]="{ columns: [{ field: 'A', direction: 'Ascending' }]}"
-									[enablePersistence]="false">
-		<e-columns>
-			<e-column field="Id"
-                headerText="ID"
-                isPrimaryKey="true"
-                [visible]="false">
+  <button id="change" (click)="onClick()">Toggle Data</button>
+  <ejs-grid
+    #grid
+    [dataSource]="data"
+    [selectionSettings]="{
+      mode: 'Row',
+      checkboxMode: 'ResetOnRowClick'
+    }"
+    [editSettings]="{
+      allowEditing: true,
+      allowAdding: true,
+      allowDeleting: true
+    }"
+    [allowSorting]="true"
+    [sortSettings]="{ columns: [{ field: 'A', direction: 'Ascending' }] }"
+    [enablePersistence]="false"
+  >
+    <e-columns>
+      <e-column
+        field="Id"
+        headerText="ID"
+        isPrimaryKey="true"
+        [visible]="false"
+      >
       </e-column>
-			<e-column field="name"
-                headerText="Name"
-                [width]="100">
-      </e-column>
-			<e-column *ngFor="let column of columns" 
-								[field]="column.field" 
-								[headerText]="column.headerText"
-								[width]="column.width" 
-								headerTextAlign='center' 
-								textAlign='center'>
+      <e-column field="name" headerText="Name" [width]="100"> </e-column>
+      <e-column
+        *ngFor="let column of columns"
+        [field]="column.field"
+        [headerText]="column.headerText"
+        [width]="column.width"
+				[sortComparer]='sortComparer'
+        headerTextAlign="center"
+        textAlign="center"
+      >
         <ng-template #template let-data>
           <div [style.color]="data[column.field].color">
-						{{data[column.field].value}}
-					</div>
+            {{ data[column.field].value }}
+          </div>
         </ng-template>
-        </e-column>
-		</e-columns>
-	</ejs-grid>
-
+      </e-column>
+    </e-columns>
+  </ejs-grid>
 </div>

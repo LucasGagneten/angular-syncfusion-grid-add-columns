@@ -8,14 +8,15 @@ import {
 import { data1, data2 } from './data';
 import { GridComponent } from '@syncfusion/ej2-angular-grids';
 import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class AppComponent implements OnInit {
-  public data: Object[];
   public columns1 = [
     {
       field: 'A',
@@ -66,6 +67,7 @@ export class AppComponent implements OnInit {
     },
   ];
 
+  public data: Object[];
   public columns = [];
   private toggle = false;
 
@@ -79,12 +81,23 @@ export class AppComponent implements OnInit {
   onClick() {
     this.toggle = !this.toggle;
     if (this.toggle) {
-      this.columns = this.columns2;
       this.data = data2;
+      this.columns = this.columns2;
     } else {
-      this.columns = this.columns1;
       this.data = data1;
+      this.columns = this.columns1;
     }
-    this.gridObj.refreshColumns();
+    setTimeout(() => {
+      this.gridObj.refreshColumns();
+    }, 0);
   }
+
+  sortComparer(a: Cell, b: Cell) {
+    return a.value.localeCompare(b.value);
+  }
+}
+
+export interface Cell {
+  value: string;
+  color?: string;
 }
